@@ -30,6 +30,14 @@ Describe "Shares" {
     Mock -CommandName Get-WmiObject -ParameterFilter { $Class -eq 'win32_share' } -MockWith { 
         Import-Clixml $shares }
 
+    Mock -CommandName Get-CimInstance -ParameterFilter { $ClassName -eq 'win32_share' } -MockWith { 
+        Import-Clixml $shares }
+    
+    function hostname { "hostname.exe is an executable, but in this case we allow it. :)" }
+    Mock -CommandName hostname -MockWith { "NDEV" }
+
+    $env:ComputerName = "NDEV"
+
     Context "Contestant '$contestant', solution >$Solution< with length $solutionLength" {
         It 'Contains no semicolons' {
             Test-NotContainsSemicolon $Solution
