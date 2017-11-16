@@ -36,9 +36,9 @@ Describe "Mandelbrot joke" {
             Invoke-Solution $Solution
         }
         # this simulates the switch "default" case 
-        It "Contains `$question" {
-            Test-UseQuestionVariable $Solution 
-        }
+        #It "Contains `$question" {
+        #    Test-UseQuestionVariable $Solution
+        #}
 
         It "Produces correct answer" {
             $solutionOutput = Invoke-Solution $Solution
