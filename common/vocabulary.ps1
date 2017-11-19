@@ -22,6 +22,10 @@ function Test-MiningAnswerForLongText ($SolutionOutput) {
     Assert-Equal -Expected 0.516397779494322D -Actual ([decimal]$SolutionOutput)
 }
 
+function Test-MiningAnswerForSimilarText ($SolutionOutput) {
+    Assert-Equal -Expected 0.870388279778489D -Actual ([decimal]$SolutionOutput)
+}
+
 function Test-MiningAnswerForPowershell ($SolutionOutput) { 
     Assert-Equal -Expected 1D -Actual ([decimal]$SolutionOutput)
 }
