@@ -27,6 +27,12 @@ function Invoke-SolutionWithPowershell ($Solution) {
     Invoke-Expression $Solution
 }
 
+function Invoke-SolutionWithSimilarText ($Solution) {
+    $t1 = "Unless you work hard, you won't win."
+    $t2 = "You must work hard. Otherwise, you won't win."
+    Invoke-Expression $Solution
+}
+
 Describe "Text mining" {
     $Solution = $Solution.Trim()
     $solutionLength = $Solution.Length
@@ -52,6 +58,11 @@ Describe "Text mining" {
         It "Returns the correct answer for powershell text" {
             $solutionOutput = Invoke-SolutionWithPowershell $Solution
             Test-MiningAnswerForPowershell $solutionOutput
+        }
+        
+        It "Returns the correct answer for similar text" {
+            $solutionOutput = Invoke-SolutionWithSimilarText $Solution
+            Test-MiningAnswerForSimilarText $solutionOutput
         }
     }
 }

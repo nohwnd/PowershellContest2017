@@ -93,33 +93,17 @@ Describe "Mining" {
             { Test-MiningAnswerForPowershell 10 } | Assert-Throw -ExceptionType ([Assertions.AssertionException])
         }
     }
-}
-
-Describe "Shares" {
-    Context "Gives correct answer for long text" {
+    
+    Context "Gives correct answer for similar text" {
         It "Passes given the correct answer" {
-            Test-MiningAnswerForLongText -SolutionOutput 0.516397779494322
+            Test-MiningAnswerForSimilarText -SolutionOutput 0.870388279778489
         }
-
+        
         It "Fails given incorrect answer" {
-            { Test-MiningAnswerForLongText 10 } | Assert-Throw -ExceptionType ([Assertions.AssertionException])
-        }
-    }
-
-    Context "Gives correct answer for long text" {
-        It "Passes given the correct answer" {
-            Test-MiningAnswerForPowershell -SolutionOutput 1
-        }
-
-        It "Fails given incorrect answer" {
-            { Test-MiningAnswerForPowershell 10 } | Assert-Throw -ExceptionType ([Assertions.AssertionException])
+            { Test-MiningAnswerForSimilarText 10 } | Assert-Throw -ExceptionType ([Assertions.AssertionException])
         }
     }
 }
-
-# Describe "Shares" {
-#     Context "Given correct"
-# }
 
 Describe "Common" {
     Context "Contains no semicolons" {
